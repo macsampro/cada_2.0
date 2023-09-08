@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { SexAnimalsModule } from './sex_animals/sex_animals.module';
+import { SexAnimal } from './sex_animals/entities/sex_animal.entity';
+import { BreedModule } from './breed/breed.module';
 
 @Module({
   imports: [
@@ -15,11 +17,12 @@ import { SexAnimalsModule } from './sex_animals/sex_animals.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
-      entities: [],
+      entities: [SexAnimal],
       synchronize: false,
       logging: true,
     }),
     SexAnimalsModule,
+    BreedModule,
   ],
   controllers: [AppController],
   providers: [AppService],

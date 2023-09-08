@@ -1,4 +1,4 @@
-import { IsNotEmpty } from '@nestjs/class-validator';
+// import { IsNotEmpty } from '@nestjs/class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateSexAnimalDto {
@@ -6,6 +6,6 @@ export class CreateSexAnimalDto {
   id_sex_animal: number;
 
   @ApiProperty()
-  @IsNotEmpty()
+  //   @IsNotEmpty()
   nom: string;
 }
