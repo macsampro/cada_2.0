@@ -24,10 +24,7 @@
     "@nestjs/config": "^3.0.1",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
-<<<<<<< HEAD
-=======
     "@nestjs/swagger": "^7.1.10",
->>>>>>> f00b56c994abd52498618e7e9c9e9f5358870eab
     "@nestjs/typeorm": "^10.0.0",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.1.13",

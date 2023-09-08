@@ -7,7 +7,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Amis des Animaux')
-    .setDescription('Description des requêtes de l\'équipe des Amis des Animaux')
+    .setDescription("Description des requêtes de l'équipe des Amis des Animaux")
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
