@@ -34,5 +34,9 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
+<<<<<<< HEAD
 # DOT ENV
+=======
+# DOTENV
+>>>>>>> f00b56c994abd52498618e7e9c9e9f5358870eab
 .env
