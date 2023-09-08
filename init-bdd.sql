@@ -50,22 +50,3 @@ id_user int not null references users(id_user),
 id_breed int not null references breed(id_breed),
 id_photo int not null references photos(id_photo),
 id_sex_animal int not null references sex_animals(id_sex_animal));
-
-insert into species (species) 
-values ('Chien'), ('Chat'), ('NAC');
-
-insert into sex_animals(sex) 
-values ('Mâle'), ('Femelle'), ('Non sexable');
-
-insert into gender_users(gender) 
-values ('Ne se prononce pas'), ('Homme'), ('Femme'), 
-('Non binaire'), ('Non genré'), ('FTM'), ('MTF');
-
-insert into breed(breed, id_species) 
-values ('Labrador', 1), ('Golden retriever', 1), 
-('Berger australien', 1), ('Berger allemand', 1), 
-('Bouledogue français', 1), ('Chihuahua', 1), 
-('Dogue allemand', 1), ('Pitbull', 1), ('Chartreux', 2), 
-('Persan', 2), ('Sphinx', 2), ('Siamois', 2), 
-('Sacré de Birmanie', 2), ('Oiseau', 3), ('Lapin', 3), 
-('Furet', 3), ('Serpent', 3), ('Lézard', 3), ('Caméléon', 3);
