@@ -1,3 +1,16 @@
+
+-- create database cada;
+DROP TABLE gender_users;
+DROP TABLE photos;
+DROP TABLE sex_animals;
+DROP TABLE species;
+DROP TABLE breed;
+DROP TABLE users;
+DROP TABLE messages;
+DROP TABLE animals;
+
+
+
 create table gender_users (id_gender_user serial primary key,
 gender varchar (50) not null);
 
