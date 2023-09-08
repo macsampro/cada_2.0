@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { SpeciesModule } from './species/species.module';
 import { Species } from './species/entities/species.entity';
 import { AnimalsModule } from './animals/animals.module';
+import { Animal } from './animals/entities/animal.entity';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { AnimalsModule } from './animals/animals.module';
     username: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
     database: process.env.POSTGRES_DATABASE,
-    entities: [Species],
+    entities: [Species, Animal],
     synchronize: false,
     logging: true,
   }),

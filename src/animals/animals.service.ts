@@ -1,26 +1,46 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateAnimalDto } from './dto/create-animal.dto';
+import { Animal } from './entities/animal.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { UpdateAnimalDto } from './dto/update-animal.dto';
+
 
 @Injectable()
 export class AnimalsService {
-  create(createAnimalDto: CreateAnimalDto) {
-    return 'This action adds a new animal';
+  constructor(@InjectRepository(Animal) private animalRepository: Repository<Animal>) { }
+
+  async create(createSpeciesDto: CreateAnimalDto) {
+    const species = this.animalRepository.create(createSpeciesDto);
+    const result = await this.animalRepository.save(species);
+    return result;
   }
 
-  findAll() {
-    return `This action returns all animals`;
+  async findAll() {
+    return await this.animalRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} animal`;
+  async findOne(id_animals: number) {
+
+    const found = await this.animalRepository.findOneBy({ id_animals })
+    if (!found) {
+      throw new NotFoundException(`The species id number ${id_animals} is not found !`)
+    }
+    return found;
   }
 
-  update(id: number, updateAnimalDto: UpdateAnimalDto) {
-    return `This action updates a #${id} animal`;
+  async update(id_animals: number, updateSpeciesDto: UpdateAnimalDto) {
+    await this.animalRepository.update(id_animals, updateSpeciesDto);
+    return this.findOne(id_animals);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} animal`;
+  async remove(id_animals: number) {
+
+    const animalToRemove = await this.findOne(id_animals);
+    if (!animalToRemove) {
+      throw new Error(`The animal with id number: ${id_animals} is not found !`)
+    }
+    await this.animalRepository.remove(animalToRemove);
+    return { message: `The animal ${animalToRemove.name} is deleted !` };
   }
 }
