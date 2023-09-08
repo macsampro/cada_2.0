@@ -7,4 +7,7 @@ export class GenderUser {
 
   @Column()
   gender: string;
+
+  //   @OneToMany(() => User, (id_gender_user) => id_gender_user)
+  //   user: User;
 }
