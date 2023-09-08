@@ -6,5 +6,5 @@ export class SexAnimal {
   id_sex_animal: number;
 
   @Column({ type: 'varchar', length: 50 })
-  nom: string;
+  sex: string;
 }

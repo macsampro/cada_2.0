@@ -5,6 +5,6 @@ export class Breed {
   @PrimaryGeneratedColumn()
   id_breed: number;
 
-  @Column({ type: 'varchar', not null })
+  @Column({ type: 'varchar', length:255 })
   nom: string;
 }

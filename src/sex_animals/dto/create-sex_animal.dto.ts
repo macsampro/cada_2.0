@@ -7,5 +7,5 @@ export class CreateSexAnimalDto {
 
   @ApiProperty()
   //   @IsNotEmpty()
-  nom: string;
+  sex: string;
 }
