@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { SexAnimalsModule } from './sex_animals/sex_animals.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ConfigModule } from '@nestjs/config';
       synchronize: false,
       logging: true,
     }),
+    SexAnimalsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
