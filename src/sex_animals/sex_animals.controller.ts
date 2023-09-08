@@ -1,9 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { SexAnimalsService } from './sex_animals.service';
 import { CreateSexAnimalDto } from './dto/create-sex_animal.dto';
 import { UpdateSexAnimalDto } from './dto/update-sex_animal.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('sex-animals')
+@ApiTags('sex_animals')
 export class SexAnimalsController {
   constructor(private readonly sexAnimalsService: SexAnimalsService) {}
 
@@ -23,7 +33,10 @@ export class SexAnimalsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateSexAnimalDto: UpdateSexAnimalDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateSexAnimalDto: UpdateSexAnimalDto,
+  ) {
     return this.sexAnimalsService.update(+id, updateSexAnimalDto);
   }
 
