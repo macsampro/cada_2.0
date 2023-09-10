@@ -11,11 +11,11 @@ export class Message {
   @Column({ nullable: false })
   message: string;
 
-  @ManyToOne((type) => User, (user) => user.sentMessages) 
-  @JoinColumn({ name: 'id_user_send' }) 
-  sender: User;
+//   @ManyToOne((type) => User, (user) => user.sentMessages) 
+//   @JoinColumn({ name: 'id_user_send' }) 
+//   sender: User;
 
-  @ManyToOne((type) => User, (user) => user.receivedMessages) 
-  @JoinColumn({ name: 'id_user_received' }) 
-  receiver: User;
+//   @ManyToOne((type) => User, (user) => user.receivedMessages) 
+//   @JoinColumn({ name: 'id_user_received' }) 
+//   receiver: User;
 }
