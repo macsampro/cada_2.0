@@ -9,13 +9,13 @@ export class Message {
   date: Date;
 
   @Column({ nullable: false })
-  message: string;
+  message: Text;
 
-  @ManyToOne((type) => User, (user) => user.sentMessages) 
-  @JoinColumn({ name: 'id_user_send' }) 
-  sender: User;
+  //   @ManyToOne((type) => User, (user) => user.sentMessages,{ eager: true }))
+  //   @JoinColumn({ name: 'id_user_send' })
+  //   sender: User;
 
-  @ManyToOne((type) => User, (user) => user.receivedMessages) 
-  @JoinColumn({ name: 'id_user_received' }) 
-  receiver: User;
+  //   @ManyToOne((type) => User, (user) => user.receivedMessages,{ eager: true }))
+  //   @JoinColumn({ name: 'id_user_received' })
+  //   receiver: User;
 }
