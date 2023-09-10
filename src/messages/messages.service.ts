@@ -12,8 +12,10 @@ export class MessagesService {
     private messageRepository: Repository<Message>,
   ) {}
 
-  create(createMessageDto: CreateMessageDto) {
-    return 'This action adds a new message';
+  async create(createMessageDto: CreateMessageDto) {
+    const message = this.messageRepository.create(createMessageDto);
+    const result = await this.messageRepository.save(message);
+    return result;
   }
 
   async findAll() {
@@ -30,7 +32,12 @@ export class MessagesService {
     return messagechoosen;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} message`;
+  async remove(id: number) {
+    const messageToDelete = await this.findOne(id);
+    if (!messageToDelete) {
+      throw new NotFoundException(`Message with id : ${id} not found`);
+    }
+    await this.messageRepository.remove(messageToDelete);
+    return `Message with id : ${id} has been deleted`;
   }
 }
