@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { GenderUsersModule } from './gender_users/gender_users.module';
 import { GenderUser } from './gender_users/entities/gender_user.entity';
+import { MessagesModule } from './messages/messages.module';
+import { Message } from './messages/entities/message.entity';
 
 @Module({
   imports: [
@@ -16,11 +18,12 @@ import { GenderUser } from './gender_users/entities/gender_user.entity';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
-      entities: [GenderUser],
+      entities: [GenderUser, Message],
       synchronize: false,
       logging: true,
     }),
     GenderUsersModule,
+    MessagesModule,
   ],
  
   controllers: [AppController],
