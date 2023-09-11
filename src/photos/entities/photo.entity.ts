@@ -22,7 +22,7 @@ export class Photo {
   @JoinColumn({ name: id_animals })
   receiver: Animal;
 
-  //   @OneToOne(() => Users)
-  //   @JoinColumn({name: id_user})
-  //   receiver: Users;
+  @OneToOne(() => Users)
+  @JoinColumn({ name: id_user })
+  receiver: Users;
 }

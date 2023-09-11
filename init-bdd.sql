@@ -1,13 +1,13 @@
 
 -- drop tabels cada;
-DROP TABLE gender_users;
-DROP TABLE photos;
-DROP TABLE sex_animals;
-DROP TABLE species;
-DROP TABLE breed;
-DROP TABLE users;
-DROP TABLE messages;
-DROP TABLE animals;
+DROP TABLE IF EXISTS gender_users;
+DROP TABLE IF EXISTS photos;
+DROP TABLE IF EXISTS sex_animals;
+DROP TABLE IF EXISTS species;
+DROP TABLE IF EXISTS breed;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS messages;
+DROP TABLE IF EXISTS animals;
 
 
 -- create tabels cada;
