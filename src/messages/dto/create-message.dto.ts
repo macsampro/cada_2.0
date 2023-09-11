@@ -8,7 +8,7 @@ export class CreateMessageDto {
 
   @IsNotEmpty()
   @ApiProperty()
-  message: Text;
+  message: string;
 
   @IsNotEmpty()
   @ApiProperty()

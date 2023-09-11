@@ -43,6 +43,6 @@ export class BreedService {
       throw new Error(`The breed with id number: ${id_breed} is not found !`);
     }
     await this.breedRepository.remove(breedToRemove);
-    return { message: `The breed${breedToRemove.nom} is deleted !` };
+    return { message: `The breed${breedToRemove} is deleted !` };
   }
 }

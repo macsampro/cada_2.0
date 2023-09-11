@@ -7,5 +7,8 @@ export class CreateBreedDto {
 
   @ApiProperty()
   //   @IsNotEmpty()
-  nom: string;
+  breed: string;
+
+  @ApiProperty()
+  id_species: number;
 }

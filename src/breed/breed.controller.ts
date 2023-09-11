@@ -10,8 +10,10 @@ import {
 import { BreedService } from './breed.service';
 import { CreateBreedDto } from './dto/create-breed.dto';
 import { UpdateBreedDto } from './dto/update-breed.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('breed')
+@ApiTags('Breed')
 export class BreedController {
   constructor(private readonly breedService: BreedService) {}
 

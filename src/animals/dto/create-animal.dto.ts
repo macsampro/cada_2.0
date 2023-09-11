@@ -7,15 +7,15 @@ export class CreateAnimalDto {
   @ApiProperty()
   age: number;
 
-  // @ApiProperty()
-  // id_user: number;
+  @ApiProperty()
+  id_user: number;
 
-  // @ApiProperty()
-  // id_breed: number;
+  @ApiProperty()
+  id_breed: number;
 
-  // @ApiProperty()
-  // id_photo: number;
+  @ApiProperty()
+  id_photo: number;
 
-  // @ApiProperty()
-  // id_sex_animal: number;
+  @ApiProperty()
+  id_sex_animal: number;
 }
