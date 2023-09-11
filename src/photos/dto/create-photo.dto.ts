@@ -1,9 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateSpeciesDto {
+export class CreatePhotoDto {
   @ApiProperty()
-  id_species: number;
+  name: string;
 
   @ApiProperty()
-  species: string;
+  path: string;
 }

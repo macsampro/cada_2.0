@@ -13,6 +13,7 @@ import { Species } from './species/entities/species.entity';
 import { AnimalsModule } from './animals/animals.module';
 import { Animal } from './animals/entities/animal.entity';
 import { Breed } from './breed/entities/breed.entity';
+import { PhotosModule } from './photos/photos.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: [`.env`] }),
@@ -32,6 +33,7 @@ import { Breed } from './breed/entities/breed.entity';
     GenderUsersModule,
     SexAnimalsModule,
     SpeciesModule,
+    PhotosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
