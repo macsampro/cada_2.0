@@ -1,7 +1,7 @@
 import { Animal } from 'src/animals/entities/animal.entity';
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('sex_animals')
+@Entity({ name: 'sex_animals' })
 export class SexAnimal {
   @PrimaryGeneratedColumn()
   id_sex_animal: number;

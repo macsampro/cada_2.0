@@ -1,11 +1,10 @@
 import { Breed } from "src/breed/entities/breed.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity({name :'species'})
+@Entity({ name: 'species' })
 export class Species {
-
-    @PrimaryGeneratedColumn()
-    id_species: number;
+  @PrimaryGeneratedColumn()
+  id_species: number;
 
     @Column({ type: 'varchar', length: 255})
     species: string;
