@@ -2,8 +2,7 @@ import { GenderUser } from 'src/gender_users/entities/gender_user.entity';
 import {
   Column,
   Entity,
-  JoinColumn,
-  ManyToOne,
+  OneToMany,
   //   JoinColumn,
   //   OneToOne,
   PrimaryGeneratedColumn,
@@ -35,14 +34,28 @@ export class User {
   @Column()
   departement: number;
 
-  //   @ManyToOne(() => GenderUser, (id_gender_user) => id_gender_user)
-  //   id_gender_user: GenderUser;
+  @Column()
+  id_gender_user: number;
 
-  @ManyToOne(() => GenderUser)
-  @JoinColumn({ name: 'id_gender_user' })
-  id_gender_User: GenderUser;
+  @Column()
+  id_photo: number;
+
+  @OneToMany(() => GenderUser, (gender_user) => gender_user.user, {
+    eager: true,
+  })
+  gender_user: GenderUser;
 
   //   @OneToOne(() => Photo)
   //   @JoinColumn()
   //   id_photo: Photo;
+
+  // @ManyToOne(() => Animal, (animal) => animal.user)
+  // animal: Animal;
+
+  //   @ManyToOne(() => Message, (message) => message.user)
+  //   message: Message;
+
+  //   @ManyToOne(() => Message, (message) => message.user)
+  //   message: Message;
+  // }
 }
