@@ -9,6 +9,6 @@ export class Species {
     @Column({ type: 'varchar', length: 255})
     species: string;
 
-    // @ManyToOne(()=> Breed, (breed)=> breed.species)
-    // breed: Breed;
+    @ManyToOne(()=> Breed, (breed)=> breed.species)
+    breed: Breed;
 }

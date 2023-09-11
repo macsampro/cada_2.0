@@ -17,9 +17,9 @@ export class Breed {
   @Column()
   nom: string;
 
-  // @ManyToOne(()=> Animal, (animal)=> animal.breed)
-  // animal:Animal;
+  @ManyToOne(()=> Animal, (animal)=> animal.breed)
+  animal:Animal;
 
-  // @OneToMany(()=> Species, (species)=> species.breed)
-  // breed: Breed;
+  @OneToMany(()=> Species, (species)=> species.breed)
+  breed: Breed;
 }

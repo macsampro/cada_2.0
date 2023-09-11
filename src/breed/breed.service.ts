@@ -38,11 +38,12 @@ export class BreedService {
   }
 
   async remove(id_breed: number) {
+    
     const breedToRemove = await this.findOne(id_breed);
     if (!breedToRemove) {
       throw new Error(`The breed with id number: ${id_breed} is not found !`);
     }
     await this.breedRepository.remove(breedToRemove);
-    return { message: `The breed${breedToRemove.breed} is deleted !` };
+    return { message: `The breed${breedToRemove} is deleted !` };
   }
 }
