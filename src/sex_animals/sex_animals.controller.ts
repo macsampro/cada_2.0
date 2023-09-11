@@ -15,7 +15,7 @@ import { ApiTags } from '@nestjs/swagger';
 @Controller('sex-animals')
 @ApiTags('sex_animals')
 export class SexAnimalsController {
-  constructor(private readonly sexAnimalsService: SexAnimalsService) {}
+  constructor(private readonly sexAnimalsService: SexAnimalsService) { }
 
   @Post()
   create(@Body() createSexAnimalDto: CreateSexAnimalDto) {
@@ -24,6 +24,7 @@ export class SexAnimalsController {
 
   @Get()
   findAll() {
+
     return this.sexAnimalsService.findAll();
   }
 

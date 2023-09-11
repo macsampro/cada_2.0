@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Breed } from "src/breed/entities/breed.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name :'species'})
 export class Species {
@@ -8,4 +9,7 @@ export class Species {
 
     @Column({ type: 'varchar', length: 255})
     species: string;
+
+    // @ManyToOne(()=> Breed, (breed)=> breed.species)
+    // breed: Breed;
 }

@@ -10,7 +10,7 @@ export class SexAnimalsService {
   constructor(
     @InjectRepository(SexAnimal)
     private sexAnimalRepository: Repository<SexAnimal>,
-  ) {}
+  ) { }
   async create(createSexAnimalDto: CreateSexAnimalDto) {
     const sex_animal = this.sexAnimalRepository.create(createSexAnimalDto);
     const result = await this.sexAnimalRepository.save(sex_animal);
@@ -18,6 +18,7 @@ export class SexAnimalsService {
   }
 
   async findAll() {
+    // console.log('le console loe que je veut ' + JSON.stringify(this.sexAnimalRepository.find()))
     return await this.sexAnimalRepository.find();
   }
 

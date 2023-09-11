@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Animal } from 'src/animals/entities/animal.entity';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('sex_animals')
 export class SexAnimal {
@@ -7,4 +8,8 @@ export class SexAnimal {
 
   @Column({ type: 'varchar', length: 50 })
   sex: string;
+  
+  @ManyToOne(()=> Animal, (animal)=> animal.sexAnimal)
+  @JoinColumn({name: 'id_sex_animal'})
+  animal: Animal;
 }
