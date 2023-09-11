@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'Messages' })
 export class Message {
@@ -11,11 +11,10 @@ export class Message {
   @Column({ nullable: false })
   message: Text;
 
-  //   @ManyToOne((type) => User, (user) => user.sentMessages,{ eager: true }))
-  //   @JoinColumn({ name: 'id_user_send' })
-  //   sender: User;
+  // @OneToMany(() => User, (user) => user.message, { eager: true })
+  // sender: User;
 
-  //   @ManyToOne((type) => User, (user) => user.receivedMessages,{ eager: true }))
-  //   @JoinColumn({ name: 'id_user_received' })
-  //   receiver: User;
+  // @OneToMany(() => User, (user) => user.message, { eager: true })
+  // receiver: User;
+
 }
