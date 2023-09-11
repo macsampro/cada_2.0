@@ -9,17 +9,22 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-@Entity('Breed')
+@Entity('breed')
 export class Breed {
   @PrimaryGeneratedColumn()
   id_breed: number;
 
   @Column()
-  nom: string;
+  breed: string;
 
-  @ManyToOne(()=> Animal, (animal)=> animal.breed)
-  animal:Animal;
+  @Column()
+  id_species: number;
 
-  @OneToMany(()=> Species, (species)=> species.breed)
-  breed: Breed;
+  @ManyToOne(() => Animal, (animal) => animal.breed)
+  @JoinColumn({ name: 'id_breed' })
+  animal: Animal;
+
+  @OneToMany(() => Species, (species) => species.breed)
+  @JoinColumn({ name: 'id_species' })
+  species: Species;
 }

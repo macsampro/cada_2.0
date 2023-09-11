@@ -1,6 +1,7 @@
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from 'src/users/entities/user.entity';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'Messages' })
+@Entity({ name: 'messages' })
 export class Message {
   @PrimaryGeneratedColumn()
   id_message!: number;
@@ -9,12 +10,17 @@ export class Message {
   date: Date;
 
   @Column({ nullable: false })
-  message: Text;
+  message: string;
 
-  // @OneToMany(() => User, (user) => user.message, { eager: true })
-  // sender: User;
+  @Column()
+  id_user_send: number;
 
-  // @OneToMany(() => User, (user) => user.message, { eager: true })
-  // receiver: User;
+  @Column()
+  id_user_received: number;
 
+  @OneToMany(() => User, (user) => user.messageSent, { eager: true })
+  sender: User;
+
+  @OneToMany(() => User, (user) => user.messageReceived, { eager: true })
+  receiver: User;
 }
