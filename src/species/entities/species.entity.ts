@@ -7,5 +7,4 @@ export class Species {
 
   @Column({ type: 'varchar', length: 255 })
   species: string;
-  breed: any;
 }

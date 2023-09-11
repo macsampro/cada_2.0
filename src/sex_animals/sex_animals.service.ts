@@ -55,7 +55,7 @@ export class SexAnimalsService {
     }
     await this.sexAnimalRepository.remove(sex_animalToRemove);
     return {
-      message: `Sex animal ${sex_animalToRemove.nom} is deleted !`,
+      message: `Sex animal ${sex_animalToRemove.sex} is deleted !`,
     };
   }
 }

@@ -14,16 +14,6 @@ export class Breed {
   @PrimaryGeneratedColumn()
   id_breed: number;
 
-  @Column({ length: 100 })
-  breed: string;
-
-  @ManyToOne(() => Animal)
-  @JoinColumn({ name: 'id_animals' })
-  animal: Animal;
-
-  @OneToMany(() => Species, (species) => species.breed)
-  species: Species;
+  @Column()
+  nom: string;
 }
-//create table breed (id_breed serial primary key,
-//breed varchar (255) not null,
-//id_species int not null references species(id_species));

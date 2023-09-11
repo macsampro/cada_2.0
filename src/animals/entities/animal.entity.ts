@@ -1,3 +1,5 @@
+import { SexAnimal } from 'src/sex_animals/entities/sex_animal.entity';
+import { User } from 'src/users/entities/user.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -17,9 +19,9 @@ export class Animal {
   @Column('int')
   age: number;
 
-  // @ManyToOne(() => User)
-  // @JoinColumn({ name: 'id_user' })
-  // user: User;
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'id_user' })
+  user: User;
 
   // @ManyToOne(() => Breed)
   // @JoinColumn({ name: 'id_breed' })
@@ -29,7 +31,7 @@ export class Animal {
   // @JoinColumn({ name: 'id_photo' })
   // photo: Photo;
 
-  // @ManyToOne(() => SexAnimal)
-  // @JoinColumn({ name: 'id_sex_animal' })
-  // sexAnimal: SexAnimal;
+  @ManyToOne(() => SexAnimal)
+  @JoinColumn({ name: 'id_sex_animal' })
+  sexAnimal: SexAnimal;
 }
