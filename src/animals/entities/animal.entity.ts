@@ -1,11 +1,15 @@
+import { SexAnimal } from 'src/sex_animals/entities/sex_animal.entity';
+import { User } from 'src/users/entities/user.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
   JoinColumn,
+  OneToMany,
 } from 'typeorm';
 
+@Entity({ name: 'animals' })
 @Entity({ name: 'animals' })
 export class Animal {
   @PrimaryGeneratedColumn()
@@ -17,19 +21,16 @@ export class Animal {
   @Column('int')
   age: number;
 
-  // @ManyToOne(() => User)
-  // @JoinColumn({ name: 'id_user' })
-  // user: User;
+    // @OneToMany(() => User, (user)=> user.animals)
+    // user: User;
 
-  // @ManyToOne(() => Breed)
-  // @JoinColumn({ name: 'id_breed' })
-  // breed: Breed;
+    // @OneToMany(() => Breed, (breed)=> breed.animals)
+    // breed: Breed;
 
-  // @ManyToOne(() => Photo)
-  // @JoinColumn({ name: 'id_photo' })
-  // photo: Photo;
+    // @OneToOne(() => Photo)
+    // @JoinColumn({ name: 'id_photo' })
+    // photo: Photo;
 
-  // @ManyToOne(() => SexAnimal)
-  // @JoinColumn({ name: 'id_sex_animal' })
-  // sexAnimal: SexAnimal;
+    @OneToMany(() => SexAnimal, (sexAnimal) => sexAnimal.animal)
+    sexAnimal: SexAnimal;
 }

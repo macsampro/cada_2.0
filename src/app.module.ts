@@ -13,7 +13,8 @@ import { Species } from './species/entities/species.entity';
 import { AnimalsModule } from './animals/animals.module';
 import { Animal } from './animals/entities/animal.entity';
 import { Breed } from './breed/entities/breed.entity';
-import { PhotosModule } from './photos/photos.module';
+import { UsersModule } from './users/users.module';
+import { User } from './users/entities/user.entity';
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: [`.env`] }),
@@ -24,7 +25,7 @@ import { PhotosModule } from './photos/photos.module';
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
-      entities: [Animal, Breed, GenderUser, SexAnimal, Species],
+      entities: [Animal, Breed, GenderUser, SexAnimal, Species, User],
       synchronize: false,
       logging: true,
     }),
@@ -33,7 +34,7 @@ import { PhotosModule } from './photos/photos.module';
     GenderUsersModule,
     SexAnimalsModule,
     SpeciesModule,
-    PhotosModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

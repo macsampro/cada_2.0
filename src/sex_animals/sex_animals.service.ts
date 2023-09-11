@@ -10,7 +10,7 @@ export class SexAnimalsService {
   constructor(
     @InjectRepository(SexAnimal)
     private sexAnimalRepository: Repository<SexAnimal>,
-  ) {}
+  ) { }
   async create(createSexAnimalDto: CreateSexAnimalDto) {
     const sex_animal = this.sexAnimalRepository.create(createSexAnimalDto);
     const result = await this.sexAnimalRepository.save(sex_animal);
@@ -18,6 +18,7 @@ export class SexAnimalsService {
   }
 
   async findAll() {
+    // console.log('le console loe que je veut ' + JSON.stringify(this.sexAnimalRepository.find()))
     return await this.sexAnimalRepository.find();
   }
 
@@ -55,7 +56,7 @@ export class SexAnimalsService {
     }
     await this.sexAnimalRepository.remove(sex_animalToRemove);
     return {
-      message: `Sex animal ${sex_animalToRemove.nom} is deleted !`,
+      message: `Sex animal ${sex_animalToRemove.sex} is deleted !`,
     };
   }
 }

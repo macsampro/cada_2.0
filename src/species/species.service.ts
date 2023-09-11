@@ -7,8 +7,9 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class SpeciesService {
-
-  constructor(@InjectRepository(Species) private speciesRepository: Repository<Species>){}
+  constructor(
+    @InjectRepository(Species) private speciesRepository: Repository<Species>,
+  ) {}
 
   async create(createSpeciesDto: CreateSpeciesDto) {
     const species = this.speciesRepository.create(createSpeciesDto);
@@ -21,26 +22,28 @@ export class SpeciesService {
   }
 
   async findOne(id_species: number) {
-
-    const found = await this.speciesRepository.findOneBy({ id_species })
-    if(!found){
-      throw new NotFoundException(`The species id number ${id_species} is not found !`)
+    const found = await this.speciesRepository.findOneBy({ id_species });
+    if (!found) {
+      throw new NotFoundException(
+        `The species id number ${id_species} is not found !`,
+      );
     }
     return found;
   }
 
   async update(id_species: number, updateSpeciesDto: UpdateSpeciesDto) {
-    await this.speciesRepository.update(id_species, updateSpeciesDto); 
+    await this.speciesRepository.update(id_species, updateSpeciesDto);
     return this.findOne(id_species);
   }
 
   async remove(id_species: number) {
-
     const specieToRemove = await this.findOne(id_species);
-    if(!specieToRemove){
-      throw new Error(`The specie with id number: ${id_species} is not found !`)
+    if (!specieToRemove) {
+      throw new Error(
+        `The specie with id number: ${id_species} is not found !`,
+      );
     }
     await this.speciesRepository.remove(specieToRemove);
-    return {message : `The specie ${specieToRemove.species} is deleted !`};
+    return { message: `The specie ${specieToRemove.species} is deleted !` };
   }
 }
