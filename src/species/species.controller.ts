@@ -1,15 +1,13 @@
-import {
-  Controller,
-  Get,
-  Param,  
-} from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { SpeciesService } from './species.service';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Species')
 @Controller('species')
+//protection de la root
+// @UseGuards(AuthGuard())
 export class SpeciesController {
-  constructor(private readonly speciesService: SpeciesService) {}  
+  constructor(private readonly speciesService: SpeciesService) {}
 
   @Get()
   findAll() {

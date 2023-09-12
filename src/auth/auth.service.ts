@@ -1,12 +1,16 @@
-import { ConflictException, Injectable, InternalServerErrorException, UnauthorizedException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  InternalServerErrorException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import * as bcrypt from 'bcrypt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/users/entities/user.entity';
 import { Repository } from 'typeorm';
-import { LoginDto } from './dto/login.dto';
+import { LoginDto } from './dto/login.dot';
 import { JwtService } from '@nestjs/jwt';
-
 
 @Injectable()
 export class AuthService {
@@ -15,30 +19,31 @@ export class AuthService {
     private userRepository: Repository<User>,
     private jwtService: JwtService,
   ) {}
+
   async register(createAuthDto: CreateAuthDto) {
     const {
       username,
+      password,
       firstname,
       description,
       email,
       city,
-      password,
       departement,
       id_gender_user,
     } = createAuthDto;
 
     // hashage du mot de passe
-    const salt = await bcrypt.genSalt();
+    const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // création d'une entité user
     const user = this.userRepository.create({
       username,
       firstname,
+      password: hashedPassword,
       description,
       email,
       city,
-      password: hashedPassword,
       departement,
       id_gender_user,
     });
@@ -64,7 +69,7 @@ export class AuthService {
 
     if (user && (await bcrypt.compare(password, user.password))) {
       const payload = { username };
-      const accessToken = await this.jwtService.sign(payload);
+      const accessToken = this.jwtService.sign(payload);
       return { accessToken };
     } else {
       throw new UnauthorizedException(

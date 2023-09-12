@@ -1,17 +1,12 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
 import { BreedService } from './breed.service';
 import { CreateBreedDto } from './dto/create-breed.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller('breed')
 @ApiTags('Breed')
+//protection de la root
+// @UseGuards(AuthGuard())
 export class BreedController {
   constructor(private readonly breedService: BreedService) {}
 

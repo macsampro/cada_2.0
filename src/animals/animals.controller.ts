@@ -20,6 +20,8 @@ import { PassportModule } from '@nestjs/passport';
 
 @ApiTags('Animals')
 @Controller('animals')
+//protection de la root
+// @UseGuards(AuthGuard())
 export class AnimalsController {
   constructor(private readonly animalsService: AnimalsService) {}
 
