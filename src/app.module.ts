@@ -19,6 +19,7 @@ import { Photo } from './photos/entities/photo.entity';
 import { Message } from './messages/entities/message.entity';
 import { MessagesModule } from './messages/messages.module';
 import { PhotosModule } from './photos/photos.module';
+import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: [`.env`] }),
@@ -50,6 +51,7 @@ import { PhotosModule } from './photos/photos.module';
     UsersModule,
     MessagesModule,
     PhotosModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
