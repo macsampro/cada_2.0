@@ -29,7 +29,6 @@ export class AuthService {
       email,
       city,
       departement,
-      id_photo,
       id_gender_user,
     } = createAuthDto;
 
@@ -46,7 +45,6 @@ export class AuthService {
       email,
       city,
       departement,
-      id_photo,
       id_gender_user,
     });
 

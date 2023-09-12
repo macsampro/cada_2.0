@@ -6,6 +6,5 @@ export class CreateAuthDto {
   email: string;
   city: string;
   departement: number;
-  id_photo: number;
   id_gender_user: number;
 }
