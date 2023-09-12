@@ -3,13 +3,11 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
 } from '@nestjs/common';
 import { BreedService } from './breed.service';
 import { CreateBreedDto } from './dto/create-breed.dto';
-import { UpdateBreedDto } from './dto/update-breed.dto';
 import { ApiTags } from '@nestjs/swagger';
 
 @Controller('breed')
@@ -30,11 +28,6 @@ export class BreedController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.breedService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateBreedDto: UpdateBreedDto) {
-    return this.breedService.update(+id, updateBreedDto);
   }
 
   @Delete(':id')
