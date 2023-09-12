@@ -4,6 +4,8 @@ import { ApiTags } from '@nestjs/swagger';
 
 @Controller('gender-users')
 @ApiTags('User-Gender')
+//protection de la root
+// @UseGuards(AuthGuard())
 export class GenderUsersController {
   constructor(private readonly genderUsersService: GenderUsersService) {}
 

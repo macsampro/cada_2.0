@@ -5,6 +5,8 @@ import { ApiTags } from '@nestjs/swagger';
 
 @Controller('messages')
 @ApiTags('Messages')
+//protection de la root
+// @UseGuards(AuthGuard())
 export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
 
