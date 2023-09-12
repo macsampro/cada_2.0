@@ -6,11 +6,17 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { AnimalsService } from './animals.service';
 import { CreateAnimalDto } from './dto/create-animal.dto';
 import { UpdateAnimalDto } from './dto/update-animal.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+import { GetUser } from 'src/auth/get-user.decorators';
+import { User } from 'src/users/entities/user.entity';
+import { Animal } from './entities/animal.entity';
+import { PassportModule } from '@nestjs/passport';
 
 @ApiTags('Animals')
 @Controller('animals')
@@ -18,8 +24,10 @@ export class AnimalsController {
   constructor(private readonly animalsService: AnimalsService) {}
 
   @Post()
-  create(@Body() createAnimalDto: CreateAnimalDto) {
-    return this.animalsService.create(createAnimalDto);
+  @UseGuards(AuthGuard())
+  create(@Body() createAnimalDto: CreateAnimalDto, @GetUser() user: User): Promise<Animal> {
+     console.log(user);
+    return this.animalsService.create(createAnimalDto, user);
   }
 
   @Get()

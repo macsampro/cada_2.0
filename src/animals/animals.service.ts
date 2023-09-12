@@ -4,6 +4,8 @@ import { Animal } from './entities/animal.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UpdateAnimalDto } from './dto/update-animal.dto';
+import { GetUser } from 'src/auth/get-user.decorators';
+import { User } from 'src/users/entities/user.entity';
 
 @Injectable()
 export class AnimalsService {
@@ -11,7 +13,7 @@ export class AnimalsService {
     @InjectRepository(Animal) private animalRepository: Repository<Animal>,
   ) {}
 
-  async create(createSpeciesDto: CreateAnimalDto) {
+  async create(createSpeciesDto: CreateAnimalDto, user: User) {
     const species = this.animalRepository.create(createSpeciesDto);
     const result = await this.animalRepository.save(species);
     return result;
