@@ -12,7 +12,6 @@ import {
 } from 'typeorm';
 
 @Entity({ name: 'animals' })
-@Entity({ name: 'animals' })
 export class Animal {
   @PrimaryGeneratedColumn()
   id_animals: number;
