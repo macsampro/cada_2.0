@@ -14,6 +14,8 @@ import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Animals')
 @Controller('animals')
+//protection de la root
+// @UseGuards(AuthGuard())
 export class AnimalsController {
   constructor(private readonly animalsService: AnimalsService) {}
 
