@@ -13,7 +13,7 @@ import { CreateAnimalDto } from './dto/create-animal.dto';
 import { UpdateAnimalDto } from './dto/update-animal.dto';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
-import { GetUser } from 'src/auth/get-user.decorators';
+import { GetUser } from 'src/auth/get-user.decoration';
 import { User } from 'src/users/entities/user.entity';
 import { Animal } from './entities/animal.entity';
 import { PassportModule } from '@nestjs/passport';
