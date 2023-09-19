@@ -44,18 +44,15 @@ export class User {
   @Column()
   id_photo: number;
 
-  @OneToMany(() => GenderUser, (gender_user) => gender_user.user, {
-    eager: true,
-  })
+  @OneToMany(() => GenderUser, (gender_user) => gender_user.user)
   gender_user: GenderUser;
 
-  @OneToOne(() => Photo)
+  @OneToOne(() => Photo, { eager: true })
   @JoinColumn({ name: 'id_photo' })
   photo: Photo;
 
-  @ManyToOne(() => Animal, (animal) => animal.user)
-  @JoinColumn({ name: 'id_user' })
-  animal: Animal;
+  @OneToMany(() => Animal, (animal) => animal.user, { eager: true })
+  animal: Animal[];
 
   @ManyToOne(() => Message, (message) => message.sender)
   @JoinColumn({ name: 'id_user' })
