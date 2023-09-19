@@ -43,7 +43,7 @@ export class Animal {
   @JoinColumn({ name: 'id_breed' })
   breed: Breed;
 
-  @OneToOne(() => Photo)
+  @OneToOne(() => Photo, { eager: true })
   @JoinColumn({ name: 'id_photo' })
   photo: Photo;
 

@@ -4,7 +4,7 @@ import { Animal } from './entities/animal.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { UpdateAnimalDto } from './dto/update-animal.dto';
-import { GetUser } from 'src/auth/get-user.decorators';
+import { GetUser } from 'src/auth/get-user.decoration';
 import { User } from 'src/users/entities/user.entity';
 
 @Injectable()
