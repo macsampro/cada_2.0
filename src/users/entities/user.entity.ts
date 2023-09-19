@@ -51,9 +51,8 @@ export class User {
   @JoinColumn({ name: 'id_photo' })
   photo: Photo;
 
-  @ManyToOne(() => Animal, (animal) => animal.user)
-  @JoinColumn({ name: 'id_user' })
-  animal: Animal;
+  @OneToMany(() => Animal, (animal) => animal.user, { eager: true })
+  animal: Animal[];
 
   @ManyToOne(() => Message, (message) => message.sender)
   @JoinColumn({ name: 'id_user' })
