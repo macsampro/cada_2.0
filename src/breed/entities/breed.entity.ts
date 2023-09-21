@@ -20,11 +20,11 @@ export class Breed {
   @Column()
   id_species: number;
 
-  @ManyToOne(() => Animal, (animal) => animal.breed)
+  @OneToMany(() => Animal, (animal) => animal.breed)
   @JoinColumn({ name: 'id_breed' })
   animal: Animal;
 
-  @OneToMany(() => Species, (species) => species.breed)
+  @ManyToOne(() => Species, (species) => species.breed, { eager: true })
   @JoinColumn({ name: 'id_species' })
   species: Species;
 }
