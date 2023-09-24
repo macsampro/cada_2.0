@@ -6,8 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  Request,
   UseGuards,
-  Request
 } from '@nestjs/common';
 import { AnimalsService } from './animals.service';
 import { CreateAnimalDto } from './dto/create-animal.dto';
@@ -37,6 +37,21 @@ export class AnimalsController {
   //   return this.animalsService.findOne(+id);
   // }
 
+  // @Get('user/:id')
+  // findAnimalByUser(@Param('user/:id') id: string) {
+  //   // id = this.animalsService.findOne(+id);
+  //   console.log(id);
+  //   return this.animalsService.animalByUserId(+id);
+  // }
+
+  @Get('animal')
+  @UseGuards(AuthGuard('jwt'))
+  find(@Request() req) {
+    const userId = req.user.id_user;
+    // console.log('cote controlleur ' + userId);
+    return this.animalsService.animalByUserId(+userId);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAnimalDto: UpdateAnimalDto) {
     return this.animalsService.update(+id, updateAnimalDto);
@@ -47,11 +62,5 @@ export class AnimalsController {
     return this.animalsService.remove(+id);
   }
 
-  @Get('animal')
-  // @UseGuards(AuthGuard('jwt'))
-  find(@Request() req) {
-    const userId = req.user.id_user;
-    // console.log('cote controlleur ' + userId);
-    return this.animalsService.animalByUserId(+userId);
-  }
+
 }

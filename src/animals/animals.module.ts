@@ -9,6 +9,7 @@ import { User } from 'src/users/entities/user.entity';
 @Module({
   imports: [
     TypeOrmModule.forFeature([Animal]),
+    TypeOrmModule.forFeature([User]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     TypeOrmModule.forFeature([User])
   ],
