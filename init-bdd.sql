@@ -1,4 +1,3 @@
-
 -- drop tabels cada;
 DROP TABLE IF EXISTS gender_users;
 DROP TABLE IF EXISTS photos;

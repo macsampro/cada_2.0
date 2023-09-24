@@ -63,18 +63,28 @@ export class AuthService {
     }
   }
 
-  async login(loginDto: LoginDto) {
-    const { username, password } = loginDto;
-    const user = await this.userRepository.findOneBy({ username });
+  // async login(loginDto: LoginDto) {
+  //   const { username, password } = loginDto;
+  //   const user = await this.userRepository.findOneBy({ username });
 
-    if (user && (await bcrypt.compare(password, user.password))) {
-      const payload = { username };
-      const accessToken = this.jwtService.sign(payload);
+  //   if (user && (await bcrypt.compare(password, user.password))) {
+  //     const payload = { username };
+  //     const accessToken = this.jwtService.sign(payload);
+  //     return { accessToken };
+  //   } else {
+  //     throw new UnauthorizedException(
+  //       'Ces identifiants ne sont pas bons, déso...',
+  //     );
+  //   }
+  // }
+
+  async login(loginDto: LoginDto) {
+    const { username } = loginDto;
+    const user = await this.userRepository.findOneBy({ username });
+    const payload = { username };
+    const accessToken = this.jwtService.sign(payload);
+    if (user) {
       return { accessToken };
-    } else {
-      throw new UnauthorizedException(
-        'Ces identifiants ne sont pas bons, déso...',
-      );
     }
   }
 }

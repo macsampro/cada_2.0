@@ -2,13 +2,15 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateAnimalDto } from './dto/create-animal.dto';
 import { Animal } from './entities/animal.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { UpdateAnimalDto } from './dto/update-animal.dto';
+import { User } from 'src/users/entities/user.entity';
 
 @Injectable()
 export class AnimalsService {
   constructor(
     @InjectRepository(Animal) private animalRepository: Repository<Animal>,
+    @InjectRepository(User) private userRepository: Repository<User>,
   ) {}
 
   async create(createSpeciesDto: CreateAnimalDto) {
@@ -45,5 +47,19 @@ export class AnimalsService {
     }
     await this.animalRepository.remove(animalToRemove);
     return { message: `The animal ${animalToRemove.name} is deleted !` };
+  }
+
+  async animalByUserId(userId: number) {
+    console.log('de la grosse merde son ordi ' + userId);
+    const result = await this.animalRepository.findOne({
+      where: { id_user: userId },
+    });
+    const photo = await this.userRepository.findOne({
+      where: { id_user: userId },
+    });
+    console.log('info sur result ' + result);
+    // const animal = result.animal;
+    const object = { animal: result, photo: photo.photo.path };
+    return object;
   }
 }
