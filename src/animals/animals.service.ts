@@ -57,7 +57,7 @@ export class AnimalsService {
     });
     console.log('info sur result ' + result);
     // const animal = result.animal;
-    const object = { animal: result, photo: photo.photo.path };
+    const object = { animal: result, photo: photo.photo };
     return object;
   }
 
