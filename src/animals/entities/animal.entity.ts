@@ -7,11 +7,10 @@ import {
   PrimaryGeneratedColumn,
   Column,
   JoinColumn,
-  OneToMany,
   OneToOne,
+  ManyToOne,
 } from 'typeorm';
 
-@Entity({ name: 'animals' })
 @Entity({ name: 'animals' })
 export class Animal {
   @PrimaryGeneratedColumn()
@@ -35,19 +34,19 @@ export class Animal {
   @Column()
   id_sex_animal: number;
 
-  @OneToMany(() => User, (user) => user.animal)
+  @ManyToOne(() => User, (user) => user.animal, { eager: false })
   @JoinColumn({ name: 'id_user' })
   user: User;
 
-  @OneToMany(() => Breed, (breed) => breed.animal)
+  @ManyToOne(() => Breed, (breed) => breed.animal, { eager: true })
   @JoinColumn({ name: 'id_breed' })
   breed: Breed;
 
-  @OneToOne(() => Photo)
+  @OneToOne(() => Photo, { eager: true })
   @JoinColumn({ name: 'id_photo' })
   photo: Photo;
 
-  @OneToMany(() => SexAnimal, (sexAnimal) => sexAnimal.animal)
+  @ManyToOne(() => SexAnimal, (sexAnimal) => sexAnimal.animal, { eager: true })
   @JoinColumn({ name: 'id_sex_animal' })
   sexAnimal: SexAnimal;
 }

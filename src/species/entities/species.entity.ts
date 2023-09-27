@@ -3,7 +3,7 @@ import {
   Column,
   Entity,
   JoinColumn,
-  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
@@ -15,7 +15,7 @@ export class Species {
   @Column({ type: 'varchar', length: 255 })
   species: string;
 
-  @ManyToOne(() => Breed, (breed) => breed.species)
+  @OneToMany(() => Breed, (breed) => breed.species)
   @JoinColumn({ name: 'id_species' })
   breed: Breed;
 }

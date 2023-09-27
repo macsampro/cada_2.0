@@ -5,5 +5,11 @@ export class CreatePhotoDto {
   name: string;
 
   @ApiProperty()
-  path: string;
+  minetype: string;
+
+  @ApiProperty()
+  description: string;
+
+  @ApiProperty()
+  size: number;
 }

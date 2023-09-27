@@ -3,6 +3,7 @@ import {
   Injectable,
   InternalServerErrorException,
   UnauthorizedException,
+  // UnauthorizedException,
 } from '@nestjs/common';
 import { CreateAuthDto } from './dto/create-auth.dto';
 import * as bcrypt from 'bcrypt';
@@ -30,6 +31,7 @@ export class AuthService {
       city,
       departement,
       id_gender_user,
+      id_photo,
     } = createAuthDto;
 
     // hashage du mot de passe
@@ -46,6 +48,7 @@ export class AuthService {
       city,
       departement,
       id_gender_user,
+      id_photo,
     });
 
     try {
@@ -78,3 +81,11 @@ export class AuthService {
     }
   }
 }
+//   async login(loginDto: LoginDto) {
+//     const { username } = loginDto;
+//     const user = await this.userRepository.findOneBy({ username });
+//     const payload = { username };
+//     const accessToken = this.jwtService.sign(payload);
+//     if (user) {
+//       return { accessToken };
+//     }

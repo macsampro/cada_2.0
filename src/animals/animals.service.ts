@@ -11,6 +11,7 @@ import { User } from 'src/users/entities/user.entity';
 export class AnimalsService {
   constructor(
     @InjectRepository(Animal) private animalRepository: Repository<Animal>,
+    @InjectRepository(User) private userRepository: Repository<User>,
   ) {}
 
   async create(createSpeciesDto: CreateAnimalDto, user: User) {
@@ -31,6 +32,34 @@ export class AnimalsService {
       );
     }
     return found;
+  }
+
+  // async animalByUserId(id_user: number) {
+  //   // console.log(`"qui es tu user ? "+ ${id_user}`);
+  //   // this.route.paramMap
+  //   //   .pipe(
+  //   //     map((params) => params.get('id')),
+  //   //     tap((id) => (id = +id)),
+  //   //   )
+  //   //   .subscribe((id) => {
+  //   //     id_user = id;
+  //   //   });
+
+  //   return await this.animalRepository.findOneBy({ id_user });
+  // }
+
+  async animalByUserId(userId: number) {
+    console.log('de la grosse merde son ordi ' + userId);
+    const result = await this.animalRepository.findOne({
+      where: { id_user: userId },
+    });
+    const photo = await this.userRepository.findOne({
+      where: { id_user: userId },
+    });
+    console.log('info sur result ' + result);
+    // const animal = result.animal;
+    const object = { animal: result, photo: photo.photo };
+    return object;
   }
 
   async update(id_animals: number, updateSpeciesDto: UpdateAnimalDto) {
