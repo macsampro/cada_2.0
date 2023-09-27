@@ -8,6 +8,12 @@ export class Photo {
   @Column({ type: 'varchar', length: 255 })
   name: string;
 
-  @Column({ type: 'varchar', length: 255 })
-  path: string;
+  @Column()
+  mimetype: string;
+
+  @Column()
+  size: number;
+
+  @Column()
+  description: string;
 }
