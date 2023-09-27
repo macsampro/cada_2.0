@@ -29,6 +29,7 @@
     "@nestjs/platform-express": "^10.0.0",
     "@nestjs/swagger": "^7.1.10",
     "@nestjs/typeorm": "^10.0.0",
+    "@nestjs/websockets": "^10.2.6",
     "bcrypt": "^5.1.1",
     "cjs-loader": "^0.1.0",
     "class-transformer": "^0.5.1",
