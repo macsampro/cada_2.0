@@ -36,10 +36,10 @@ export class MessagesService {
   async findConversation(user1Id: number, user2Id: number): Promise<Message[]> {
     return this.messageRepository
       .createQueryBuilder('message')
-      .leftJoinAndSelect('message.sender_id', 'sender')
-      .leftJoinAndSelect('message.receiver_id', 'receiver')
-      .where("(message.sender_id = :user1Id AND message.receiver_id = :user2Id) OR (message.sender_id = :user2Id AND message.receiver_id = :user1Id)", { user1Id, user2Id })
-      .orderBy('message.timestamp', 'ASC')
+      .leftJoinAndSelect('message.sender', 'sender')
+      .leftJoinAndSelect('message.receiver', 'receiver')
+      .where("(message.sender = :user1Id AND message.receiver = :user2Id) OR (message.sender = :user2Id AND message.receiver = :user1Id)", { user1Id, user2Id })
+      .orderBy('message.date', 'ASC')
       .getMany();
   }
 
