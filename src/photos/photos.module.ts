@@ -15,6 +15,6 @@ import { MulterModule } from '@nestjs/platform-express';
     PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
   controllers: [PhotosController],
-  providers: [PhotosService],
+  providers: [PhotosService]
 })
 export class PhotosModule {}
