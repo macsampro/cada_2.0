@@ -21,6 +21,7 @@ import { MessagesModule } from './messages/messages.module';
 import { PhotosModule } from './photos/photos.module';
 import { AuthModule } from './auth/auth.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { ChatGateway } from './chat.gateway';
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: [`.env`] }),
@@ -53,6 +54,7 @@ import { MulterModule } from '@nestjs/platform-express';
     MessagesModule,
     PhotosModule,
     AuthModule,
+    ChatGateway
   ],
   controllers: [AppController],
   providers: [AppService],
