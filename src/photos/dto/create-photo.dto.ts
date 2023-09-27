@@ -5,7 +5,7 @@ export class CreatePhotoDto {
   name: string;
 
   @ApiProperty()
-  minetype: string;
+  mimetype: string;
 
   @ApiProperty()
   description: string;
