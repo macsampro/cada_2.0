@@ -71,9 +71,9 @@ export class AuthService {
     const user = await this.userRepository.findOneBy({ username });
 
     if (user && (await bcrypt.compare(password, user.password))) {
-      const payload = { username };
+      const payload = { username, user_id: user.id_user };
       const accessToken = this.jwtService.sign(payload);
-      return { accessToken };
+      return { accessToken, user_id: user.id_user };
     } else {
       throw new UnauthorizedException(
         'Ces identifiants ne sont pas bons, déso...',
@@ -81,11 +81,3 @@ export class AuthService {
     }
   }
 }
-//   async login(loginDto: LoginDto) {
-//     const { username } = loginDto;
-//     const user = await this.userRepository.findOneBy({ username });
-//     const payload = { username };
-//     const accessToken = this.jwtService.sign(payload);
-//     if (user) {
-//       return { accessToken };
-//     }
