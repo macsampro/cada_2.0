@@ -43,7 +43,7 @@ import { ChatGateway } from './chat.gateway';
         Message,
       ],
       synchronize: false,
-      logging: true,
+      logging: false,
     }),
     AnimalsModule,
     BreedModule,

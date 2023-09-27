@@ -30,7 +30,7 @@ export class MessagesService {
   }
 
   async findAll(): Promise<Message[]> {
-    return await this.messageRepository.find({ relations: ['sender_id', 'receiver_id'] });
+    return await this.messageRepository.find({ relations: ['id_user_send', 'id_user_received'] });
   }
 
   async findConversation(user1Id: number, user2Id: number): Promise<Message[]> {

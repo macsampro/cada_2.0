@@ -9,9 +9,6 @@ import { Server, Socket } from 'socket.io';
 
 export class ChatGateway implements OnGatewayInit, OnGatewayConnection {
 
-
-
-
     private logger: Logger = new Logger('ChatGateway');
 
     @WebSocketServer()
@@ -29,9 +26,12 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection {
     @SubscribeMessage('msgToServer')
     handleMessage(client: Socket, payload: string): WsResponse<string> {
         // console.log('Emission handle message ')
+        this.logger.log('Message recu du client : ', payload)
         // this.server.emit('msgToClient', payload)
         client.broadcast.emit('msgToClient', payload)
-        return { event: 'msgToClient', data: 'Message envoyé avec succes !' }
+        this.logger.log('Emission de msgToClient avec le payload : ', payload)
+  
+        return { event: 'msgToClient', data: payload }
     }
 
     handleDisconnect(client: Socket) {
