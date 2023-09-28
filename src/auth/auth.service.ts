@@ -90,9 +90,10 @@ export class AuthService {
       const payload = {
         username: user.username,
         user_id: user.id_user,
+        // sub: user.username,
       };
       const accessToken = this.jwtService.sign(payload);
-      return { accessToken, user_id: user.id_user };
+      return { accessToken, user_id: user.id_user, username: user.username };
     } else {
       throw new UnauthorizedException(
         'Ces identifiants ne sont pas bons, déso...',
