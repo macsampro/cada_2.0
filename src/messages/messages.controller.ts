@@ -25,6 +25,12 @@ export class MessagesController {
     return this.messagesService.findConversation(user1Id, user2Id);
   }
 
+  @Get('list/:userId')
+  getUserConversations(@Param('userId') userId: number) {
+    return this.messagesService.getUserConversations(userId);
+  }
+
+
   @Get('new/:afterId')
   getNewMessage(@Param('afterId') afterId: number) {
     return this.messagesService.getMessagesAfterId(afterId);
