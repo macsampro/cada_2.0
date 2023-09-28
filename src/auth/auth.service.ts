@@ -71,9 +71,9 @@ export class AuthService {
     const user = await this.userRepository.findOneBy({ username });
 
     if (user && (await bcrypt.compare(password, user.password))) {
-      const payload = { username };
+      const payload = { username, user_id: user.password };
       const accessToken = this.jwtService.sign(payload);
-      return { accessToken };
+      return { accessToken, user_id: user.password };
     } else {
       throw new UnauthorizedException(
         'Ces identifiants ne sont pas bons, déso...',
