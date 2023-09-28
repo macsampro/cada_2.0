@@ -1,6 +1,8 @@
 import { Logger } from '@nestjs/common';
 import { OnGatewayConnection, OnGatewayInit, SubscribeMessage, WebSocketGateway, WebSocketServer, WsResponse } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
+import { Message } from './messages/entities/message.entity';
+import { MeasureMemoryMode } from 'vm';
 
 
 @WebSocketGateway({
@@ -24,8 +26,9 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection {
 
 
     @SubscribeMessage('msgToServer')
-    handleMessage(client: Socket, payload: string): WsResponse<string> {
+    handleMessage(client: Socket, payload: Message): WsResponse<Message> {
         // console.log('Emission handle message ')
+        // TODO communication avec le service messages
         this.logger.log('Message recu du client : ', payload)
         // this.server.emit('msgToClient', payload)
         client.broadcast.emit('msgToClient', payload)
