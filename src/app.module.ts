@@ -20,6 +20,8 @@ import { Message } from './messages/entities/message.entity';
 import { MessagesModule } from './messages/messages.module';
 import { PhotosModule } from './photos/photos.module';
 import { AuthModule } from './auth/auth.module';
+import { MulterModule } from '@nestjs/platform-express';
+import { ChatGateway } from './chat.gateway';
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: [`.env`] }),
@@ -41,7 +43,7 @@ import { AuthModule } from './auth/auth.module';
         Message,
       ],
       synchronize: false,
-      logging: true,
+      logging: false,
     }),
     AnimalsModule,
     BreedModule,
@@ -52,6 +54,7 @@ import { AuthModule } from './auth/auth.module';
     MessagesModule,
     PhotosModule,
     AuthModule,
+    ChatGateway
   ],
   controllers: [AppController],
   providers: [AppService],

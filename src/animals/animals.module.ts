@@ -11,6 +11,7 @@ import { User } from 'src/users/entities/user.entity';
     TypeOrmModule.forFeature([Animal]),
     TypeOrmModule.forFeature([User]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
+    TypeOrmModule.forFeature([User])
   ],
   controllers: [AnimalsController],
   providers: [AnimalsService],

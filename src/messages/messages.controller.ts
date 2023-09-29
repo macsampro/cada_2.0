@@ -1,7 +1,16 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { MessagesService } from './messages.service';
 import { CreateMessageDto } from './dto/create-message.dto';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('messages')
 @ApiTags('Messages')
@@ -10,9 +19,31 @@ import { ApiTags } from '@nestjs/swagger';
 export class MessagesController {
   constructor(private readonly messagesService: MessagesService) {}
 
+  @UseGuards(AuthGuard('jwt'))
   @Post()
   create(@Body() createMessageDto: CreateMessageDto) {
-    return this.messagesService.create(createMessageDto);
+    const newMessage = this.messagesService.create(createMessageDto);
+    console.log('Evenement post message');
+    return newMessage;
+  }
+
+  @Get('conversation/:user1Id/:user2Id')
+  @UseGuards(AuthGuard('jwt'))
+  async findConversation(
+    @Param('user1Id') user1Id: number,
+    @Param('user2Id') user2Id: number,
+  ) {
+    return this.messagesService.findConversation(user1Id, user2Id);
+  }
+
+  @Get('list/:userId')
+  getUserConversations(@Param('userId') userId: number) {
+    return this.messagesService.getUserConversations(userId);
+  }
+
+  @Get('new/:afterId')
+  getNewMessage(@Param('afterId') afterId: number) {
+    return this.messagesService.getMessagesAfterId(afterId);
   }
 
   @Get()
