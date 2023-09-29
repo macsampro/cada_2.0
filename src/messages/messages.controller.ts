@@ -49,16 +49,19 @@ export class MessagesController {
   }
 
   @Get()
+  @UseGuards(AuthGuard())
   findAll() {
     return this.messagesService.findAll();
   }
 
   @Get(':id')
+  @UseGuards(AuthGuard())
   findOne(@Param('id') id: string) {
     return this.messagesService.findOne(+id);
   }
 
   @Delete(':id')
+  @UseGuards(AuthGuard())
   remove(@Param('id') id: string) {
     return this.messagesService.remove(+id);
   }

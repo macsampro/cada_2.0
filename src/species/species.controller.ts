@@ -1,6 +1,7 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { SpeciesService } from './species.service';
 import { ApiTags } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
 @ApiTags('Species')
 @Controller('species')
@@ -10,11 +11,13 @@ export class SpeciesController {
   constructor(private readonly speciesService: SpeciesService) {}
 
   @Get()
+  @UseGuards(AuthGuard())
   findAll() {
     return this.speciesService.findAll();
   }
 
   @Get(':id')
+  @UseGuards(AuthGuard())
   findOne(@Param('id') id: string) {
     return this.speciesService.findOne(+id);
   }

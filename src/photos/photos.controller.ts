@@ -7,10 +7,12 @@ import {
   UploadedFile,
   Post,
   UseInterceptors,
+  UseGuards,
 } from '@nestjs/common';
 import { PhotosService } from './photos.service';
 import { ApiTags } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('photos')
 @ApiTags('Photos')

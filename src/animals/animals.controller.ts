@@ -28,6 +28,7 @@ export class AnimalsController {
   }
 
   @Get()
+  @UseGuards(AuthGuard())
   findAll() {
     return this.animalsService.findAll();
   }
@@ -53,11 +54,13 @@ export class AnimalsController {
   }
 
   @Patch(':id')
+  @UseGuards(AuthGuard())
   update(@Param('id') id: string, @Body() updateAnimalDto: UpdateAnimalDto) {
     return this.animalsService.update(+id, updateAnimalDto);
   }
 
   @Delete(':id')
+  @UseGuards(AuthGuard())
   remove(@Param('id') id: string) {
     return this.animalsService.remove(+id);
   }
