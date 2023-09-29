@@ -1,5 +1,11 @@
 import { User } from 'src/users/entities/user.entity';
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity({ name: 'messages' })
 export class Message {
@@ -13,11 +19,10 @@ export class Message {
   message: string;
 
   @ManyToOne(() => User, (user) => user.messageSent, { eager: true })
-  @JoinColumn({ name: "id_user_send" }) 
+  @JoinColumn({ name: 'id_user_send' })
   sender: User;
 
   @ManyToOne(() => User, (user) => user.messageReceived, { eager: true })
-  @JoinColumn({ name: "id_user_received" }) 
+  @JoinColumn({ name: 'id_user_received' })
   receiver: User;
-
 }

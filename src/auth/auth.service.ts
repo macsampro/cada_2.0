@@ -101,13 +101,3 @@ export class AuthService {
     }
   }
 }
-
-
-//   async login(loginDto: LoginDto) {
-//     const { username } = loginDto;
-//     const user = await this.userRepository.findOneBy({ username });
-//     const payload = { username };
-//     const accessToken = this.jwtService.sign(payload);
-//     if (user) {
-//       return { accessToken };
-//     }

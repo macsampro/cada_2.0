@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Param, Delete, UseGuards, Request } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { MessagesService } from './messages.service';
 import { CreateMessageDto } from './dto/create-message.dto';
 import { ApiTags } from '@nestjs/swagger';
@@ -15,13 +23,16 @@ export class MessagesController {
   @Post()
   create(@Body() createMessageDto: CreateMessageDto) {
     const newMessage = this.messagesService.create(createMessageDto);
-    console.log('Evenement post message')
+    console.log('Evenement post message');
     return newMessage;
   }
 
   @Get('conversation/:user1Id/:user2Id')
   @UseGuards(AuthGuard('jwt'))
-  async findConversation(@Param('user1Id') user1Id: number, @Param('user2Id') user2Id: number) {
+  async findConversation(
+    @Param('user1Id') user1Id: number,
+    @Param('user2Id') user2Id: number,
+  ) {
     return this.messagesService.findConversation(user1Id, user2Id);
   }
 
@@ -30,7 +41,6 @@ export class MessagesController {
   getUserConversations(@Param('userId') userId: number) {
     return this.messagesService.getUserConversations(userId);
   }
-
 
   @Get('new/:afterId')
   @UseGuards(AuthGuard('jwt'))
@@ -47,7 +57,6 @@ export class MessagesController {
   findOne(@Param('id') id: string) {
     return this.messagesService.findOne(+id);
   }
-
 
   @Delete(':id')
   remove(@Param('id') id: string) {

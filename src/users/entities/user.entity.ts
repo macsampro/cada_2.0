@@ -50,17 +50,20 @@ export class User {
   @JoinColumn({ name: 'id_gender_user' })
   gender_user: GenderUser;
 
-  @OneToOne(() => Photo, { eager: true })
+  @OneToOne(() => Photo, { eager: true, cascade: true })
   @JoinColumn({ name: 'id_photo' })
   photo: Photo;
 
-  @OneToMany(() => Animal, (animal) => animal.user, { eager: true })
+  @OneToMany(() => Animal, (animal) => animal.user, {
+    eager: true,
+    cascade: true,
+  })
   @JoinColumn({ name: 'id_user' })
   animal: Animal;
 
-  @OneToMany(() => Message, (message) => message.sender)
+  @OneToMany(() => Message, (message) => message.sender, { cascade: true })
   messageSent: Message[];
 
-  @OneToMany(() => Message, (message) => message.receiver)
+  @OneToMany(() => Message, (message) => message.receiver, { cascade: true })
   messageReceived: Message[];
 }
