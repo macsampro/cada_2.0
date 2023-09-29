@@ -50,7 +50,6 @@ export class UsersService {
     if (!userFound) {
       throw new NotFoundException(`L'id numéro ${id} n'existe pas`);
     }
-    this.userRepository.remove(userFound);
-    return `Removed successfully`;
+    return await this.userRepository.remove(userFound);
   }
 }

@@ -1,15 +1,12 @@
--- drop tabels cada;
-DROP TABLE IF EXISTS gender_users;
-DROP TABLE IF EXISTS photos;
-DROP TABLE IF EXISTS sex_animals;
-DROP TABLE IF EXISTS species;
-DROP TABLE IF EXISTS breed;
-DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS messages;
-DROP TABLE IF EXISTS animals;
+drop table if exists messages;
+drop table if exists photos cascade;
+drop table if exists animals;
+drop table if exists sex_animals;
+drop table if exists gender_users cascade;
+drop table if exists species cascade;
+drop table if exists breed;
+drop table if exists users;
 
-
--- create tabels cada;
 
 create table gender_users (id_gender_user serial primary key,
 gender varchar (50) not null);
@@ -37,20 +34,14 @@ firstname varchar(255) not null,
 description text, email varchar(255) unique not null,
 city varchar(255) not null, password char(60) not null,
 departement int not null,
-id_photo int references photos(id_photo),
+id_photo int references photos(id_photo) on delete cascade,
 id_gender_user int not null references gender_users(id_gender_user));
 
-
-create table messages (id_message serial primary key,
-date date not null,
-message text not null,
-id_user_send int not null references users(id_user),
-id_user_received int not null references users(id_user));
 
 create table animals (id_animals serial primary key,
 name varchar(255) not null,
 age int not null,
-id_user int not null references users(id_user),
+id_user int not null references users(id_user) on delete cascade,
 id_breed int not null references breed(id_breed),
 id_photo int not null references photos(id_photo),
 id_sex_animal int not null references sex_animals(id_sex_animal));
@@ -58,8 +49,8 @@ id_sex_animal int not null references sex_animals(id_sex_animal));
 create table messages (id_message serial primary key,
 date timestamp default current_timestamp,
 message text not null,
-id_user_send int not null references users(id_user),
-id_user_received int not null references users(id_user));
+id_user_send int not null references users(id_user)on delete cascade,
+id_user_received int not null references users(id_user) on delete cascade);
 
 
 
