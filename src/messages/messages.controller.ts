@@ -26,12 +26,14 @@ export class MessagesController {
   }
 
   @Get('list/:userId')
+  @UseGuards(AuthGuard('jwt'))
   getUserConversations(@Param('userId') userId: number) {
     return this.messagesService.getUserConversations(userId);
   }
 
 
   @Get('new/:afterId')
+  @UseGuards(AuthGuard('jwt'))
   getNewMessage(@Param('afterId') afterId: number) {
     return this.messagesService.getMessagesAfterId(afterId);
   }
