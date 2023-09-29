@@ -58,11 +58,9 @@ export class User {
   @JoinColumn({ name: 'id_user' })
   animal: Animal;
 
-  @ManyToOne(() => Message, (message) => message.sender)
-  @JoinColumn({ name: 'id_user' })
-  messageSent: Message;
+  @OneToMany(() => Message, (message) => message.sender)
+  messageSent: Message[];
 
-  @ManyToOne(() => Message, (message) => message.receiver)
-  @JoinColumn({ name: 'id_user' })
-  messageReceived: Message;
+  @OneToMany(() => Message, (message) => message.receiver)
+  messageReceived: Message[];
 }

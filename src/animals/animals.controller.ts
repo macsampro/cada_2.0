@@ -61,4 +61,6 @@ export class AnimalsController {
   remove(@Param('id') id: string) {
     return this.animalsService.remove(+id);
   }
+
+
 }

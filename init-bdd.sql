@@ -1,12 +1,15 @@
-drop table if exists messages;
-drop table if exists photos cascade;
-drop table if exists animals;
-drop table if exists sex_animals;
-drop table if exists gender_users cascade;
-drop table if exists species cascade;
-drop table if exists breed;
-drop table if exists users;
+-- drop tabels cada;
+DROP TABLE IF EXISTS gender_users;
+DROP TABLE IF EXISTS photos;
+DROP TABLE IF EXISTS sex_animals;
+DROP TABLE IF EXISTS species;
+DROP TABLE IF EXISTS breed;
+DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS messages;
+DROP TABLE IF EXISTS animals;
 
+
+-- create tabels cada;
 
 create table gender_users (id_gender_user serial primary key,
 gender varchar (50) not null);
